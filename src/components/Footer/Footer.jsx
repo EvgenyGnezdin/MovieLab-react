@@ -1,12 +1,17 @@
+import { useContext } from 'react';
+import { movieList } from '../../context';
+
 import styles from './Footer.module.scss'
 
-const Footer = ({ setPage }) => {
+const Footer = () => {
+    const { setPage } = useContext(movieList)
+
     return (
-        <div className={styles.footer}>
+        <section className={styles.footer}>
             <div className={styles.container}>
-                <div className={styles.next} onClick={() => setPage(item => ++item)}>Еще фильмы...</div>
+                <p className={styles.next} onClick={() => setPage(item => ++item)}>Еще фильмы...</p>
             </div>
-        </div>
+        </section>
     );
 };
 

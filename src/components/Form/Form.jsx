@@ -1,10 +1,10 @@
 import { useLocation, Link } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
-
-import styles from './Form.module.scss'
 import { useState } from "react";
 
-const Form = ({handleClick}) => {
+import styles from './Form.module.scss'
+
+const Form = ({ handleClick }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 

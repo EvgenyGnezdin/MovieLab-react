@@ -27,7 +27,7 @@ const Header = ({ toggleSideBar, setTextInput, textInput, handleSearchSubmit }) 
             </div>  
             : 
             <div>
-                <Link className={styles.login} to='/login' >Войти</Link> | <Link className={styles.login} to='/register' >Зарегистрироваться</Link>
+                <Link className={styles.login} to='/login'>Войти</Link> | <Link className={styles.login} to='/register' >Зарегистрироваться</Link>
             </div>}
         </div>
     );

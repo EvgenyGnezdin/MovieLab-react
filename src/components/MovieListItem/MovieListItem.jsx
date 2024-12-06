@@ -10,7 +10,9 @@ const MovieListItem = ({ name, poster, year, rating, id }) => {
             <div>
                 <div className={styles.info}>
                     <p>{year}</p>
-                    <p><IoIosStar style={{color: 'gold', marginRight: '5px'}}/> <strong>{rating ? rating : 'Рейтинг не известен.'}</strong></p>
+                    <p className={styles.rating}><IoIosStar style={{color: 'gold', marginRight: '5px'}}/> 
+                        <strong style={{fontSize: `${rating ? '15px' : '10px'}` }}>{rating ? rating : 'Рейтинг не известен.'}</strong>
+                    </p>
                 </div>
                 <h4>{name}</h4>
             </div>

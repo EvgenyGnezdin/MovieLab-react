@@ -1,16 +1,33 @@
-import PropTypes from 'prop-types'
+import { useSelector } from 'react-redux';
 import MovieListItem from '../MovieListItem/MovieListItem';
 import Footer from '../Footer/Footer';
+import Spinner from '../Spinner/Spinner';
+import Error from '../Error/Error';
 import styles from './MoviesList.module.scss'
 
+const MoviesList = () => {
+    // const { resultsSearch } = useContext(movieList);
+    const { topMovie, load, error } = useSelector(state => state.topMovie)
+    const { movies, load1, error1 } = useSelector(state => state.searchMovie)
+    const movie = movies.length ? movies : topMovie;
+    const content = movie !== null ? <View topMovie={movie}/> : null
+    const errors = error ? <Error errorMessage={error}/> : null
+    const loading = load ? <Spinner/> : null
 
-const MoviesList = ({ movies, results, setPage, page }) => {
-
-    const movie = results !== null ? results : movies
+    
+    return (
+        <>
+            {content}
+            {errors}
+            {loading}
+        </>
+    );
+};
+const View = ({topMovie}) => {
     return (
         <>
             <div className={styles.movieslist}>
-                {movie && movie.map((item, i) => (
+                {topMovie.map((item, i) => (
                     <MovieListItem  
                         key={i}
                         name={item.nameRu}
@@ -21,13 +38,9 @@ const MoviesList = ({ movies, results, setPage, page }) => {
                     /> 
                 ))}
             </div>  
-            <Footer page={page} setPage={setPage}/>
-        </>    
-    );
-};
-
-MoviesList.propTypes = {
-    movies: PropTypes.array,
-    results: PropTypes.array
+            <Footer/>
+        </> 
+    )
 }
+
 export default MoviesList;
